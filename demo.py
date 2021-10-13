@@ -32,7 +32,7 @@ class LvglWindow(QtWidgets.QLabel):
 
         self.setPixmap(pm)
 
-win = LvglWindow();
+win = LvglWindow()
 win.show()
 
 
@@ -113,33 +113,37 @@ class SymbolButton(lvgl.Btn):
 
         self.label = lvgl.Label(self)
         self.label.set_text(text)
-        self.label.align(self, lvgl.ALIGN.CENTER,20,0)
+        self.label.align(self, lvgl.ALIGN.CENTER, 20, 0)
 
 
 class MainMenu(lvgl.Obj):
     def __init__(self, *args, **kwds):
         super().__init__(*args, **kwds)
-        self.btnPrint = SymbolButton(lvgl.SYMBOL.PLAY, 'Print', self)
+        self.btnPrint = SymbolButton(lvgl.SYMBOL.PLAY, 'Print', parent=self)
         self.btnPrint.set_x(0)
         self.btnPrint.set_y(0)
         self.btnPrint.set_width(160)
         self.btnPrint.set_height(90)
-        self.btnChange = SymbolButton(lvgl.SYMBOL.SHUFFLE, 'Change filament', self)
+
+        self.btnChange = SymbolButton(lvgl.SYMBOL.SHUFFLE, 'Change filament', parent=self)
         self.btnChange.set_x(160)
         self.btnChange.set_y(0)
         self.btnChange.set_width(160)
         self.btnChange.set_height(90)
-        self.btnPreheat = SymbolButton(lvgl.SYMBOL.CHARGE, 'Preheat', self)
+
+        self.btnPreheat = SymbolButton(lvgl.SYMBOL.CHARGE, 'Preheat', parent=self)
         self.btnPreheat.set_x(0)
         self.btnPreheat.set_y(90)
         self.btnPreheat.set_width(160)
         self.btnPreheat.set_height(90)
-        self.btnSettings = SymbolButton(lvgl.SYMBOL.SETTINGS, 'Settings', self)
+
+        self.btnSettings = SymbolButton(lvgl.SYMBOL.SETTINGS, 'Settings', parent=self)
         self.btnSettings.set_x(160)
         self.btnSettings.set_y(90)
         self.btnSettings.set_width(160)
         self.btnSettings.set_height(90)
-        self.lblStatus=lvgl.Label(self)
+
+        self.lblStatus = lvgl.Label(self)
         self.lblStatus.set_text(lvgl.SYMBOL.CHARGE + ' heating')
         self.lblStatus.align(self, lvgl.ALIGN.IN_BOTTOM_LEFT, 5, -5)
 
